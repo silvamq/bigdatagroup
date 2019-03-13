@@ -1,4 +1,4 @@
-# No Ubuntu intalar docker-compose:
+# No Ubuntu instalar docker-compose:
 
 sudo apt install docker
 

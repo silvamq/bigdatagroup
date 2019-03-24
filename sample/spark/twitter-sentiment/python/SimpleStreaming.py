@@ -4,7 +4,7 @@ from pyspark.streaming import StreamingContext
 sc = SparkContext(appName="SparkStreamingKafka")
 ssc = StreamingContext(sc, 5)
 
-lines = ssc.socketTextStream("localhost", 9999)
+lines = ssc.socketTextStream("tcp", 9999)
 
 words = lines.flatMap(lambda line: line.split(" "))
 

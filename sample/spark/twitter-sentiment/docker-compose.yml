@@ -1,7 +1,5 @@
 version: '3'
 services:
-  tcp:
-    build: ./tcp
   zookeeper:
     image: wurstmeister/zookeeper
     ports:
@@ -13,12 +11,12 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-  mongo:
-    image: mongo
-    ports:
-    - "27017:27017"
+  # mongo:
+  #   image: mongo
+  #   ports:
+  #   - "27017:27017"
   master:
-    image: spark-standalone
+    build: ./spark
     command: sh /root/master.sh
     ports:
       - "8080:8080"
@@ -33,3 +31,5 @@ services:
   #   command: sh /root/slave.sh spark://master:7077
   #   ports:
   #     - "8082:8081"
+  kafka-produce:
+    build: ./kafka-produce
